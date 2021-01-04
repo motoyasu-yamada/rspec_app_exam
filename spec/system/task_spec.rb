@@ -5,7 +5,7 @@ RSpec.describe 'Task', type: :system do
     context '正常系' do
       let (:project) { FactoryBot.create(:project) }
       let (:task) { FactoryBot.create(:task, project_id: project.id) }
-      fit '一覧ページにアクセスした場合、Taskが表示されること' do
+      it '一覧ページにアクセスした場合、Taskが表示されること' do
         # TODO: ローカル変数ではなく let を使用してください
         # project = FactoryBot.create(:project)
         # task = FactoryBot.create(:task, project_id: project.id)
@@ -31,7 +31,7 @@ RSpec.describe 'Task', type: :system do
   describe 'Task新規作成' do
     context '正常系' do
       let (:project) { FactoryBot.create(:project) }
-      fit 'Taskが新規作成されること' do
+      it 'Taskが新規作成されること' do
         # TODO: ローカル変数ではなく let を使用してください
         # project = FactoryBot.create(:project)
         visit project_tasks_path(project)
@@ -49,7 +49,7 @@ RSpec.describe 'Task', type: :system do
     context '正常系' do
       let (:project) { FactoryBot.create(:project) }
       let (:task) { FactoryBot.create(:task, project_id: project.id) }
-      fit 'Taskが表示されること' do
+      it 'Taskが表示されること' do
         # TODO: ローカル変数ではなく let を使用してください
         # project = FactoryBot.create(:project)
         # task = FactoryBot.create(:task, project_id: project.id)
@@ -78,7 +78,7 @@ RSpec.describe 'Task', type: :system do
         expect(current_path).to eq project_tasks_path(project)
       end
 
-      fit 'ステータスを完了にした場合、Taskの完了日に今日の日付が登録されること' do
+      it 'ステータスを完了にした場合、Taskの完了日に今日の日付が登録されること' do
         # TODO: ローカル変数ではなく let を使用してください
         # project = FactoryBot.create(:project)
         # task = FactoryBot.create(:task, project_id: project.id)
@@ -93,7 +93,7 @@ RSpec.describe 'Task', type: :system do
       fit '既にステータスが完了のタスクのステータスを変更した場合、Taskの完了日が更新されないこと' do
         # TODO: FactoryBotのtraitを利用してください
         # project = FactoryBot.create(:project)
-        task = FactoryBot.create(:task, project_id: project.id, status: :done, completion_date: Time.current.yesterday)
+        task = FactoryBot.create :task, :done, project_id: project.id
         visit edit_project_task_path(project, task)
         select 'todo', from: 'Status'
         click_button 'Update Task'
