@@ -7,10 +7,6 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
-
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -23,12 +19,21 @@
 
 /node_modules
 /yarn-error.log
+.node-version
 
 /public/assets
+/public/uploads
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-# Ignore .idea files
-.idea
+# Ignore vendor
+/vendor
+
+# Ignore RubyMine config.
+/.idea
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
